@@ -1,26 +1,232 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────
+   ECROF MEDIA — BRAND TOKENS
+   ───────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --white:    #FFFFFF;
+  --gray-50:  #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-500: #6B7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --ink:      #030712;
+  --ink-deep: #0A0E1A;
+  --blue-core:   #0A7AFF;
+  --blue-vivid:  #2EA2FF;
+  --blue-bright: #55BFFF;
+  --emerald: #00E89B;
 }
 
+/* ─────────────────────────────────────────────
+   TAILWIND v4 THEME
+   ───────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-white:       var(--white);
+  --color-gray-50:     var(--gray-50);
+  --color-gray-100:    var(--gray-100);
+  --color-gray-200:    var(--gray-200);
+  --color-gray-500:    var(--gray-500);
+  --color-gray-700:    var(--gray-700);
+  --color-gray-900:    var(--gray-900);
+  --color-ink:         var(--ink);
+  --color-ink-deep:    var(--ink-deep);
+  --color-blue-core:   var(--blue-core);
+  --color-blue-vivid:  var(--blue-vivid);
+  --color-blue-bright: var(--blue-bright);
+  --color-emerald:     var(--emerald);
+  --font-sans:    var(--font-inter);
+  --font-display: var(--font-instrument-serif);
+  --font-mono:    var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─────────────────────────────────────────────
+   BASE
+   ───────────────────────────────────────────── */
+html {
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--gray-700);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* em inside headings → Instrument Serif italic */
+h1 em, h2 em, h3 em, h4 em {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+p { margin: 0; }
+
+/* ─────────────────────────────────────────────
+   LAYOUT UTILITIES
+   ───────────────────────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section {
+  padding: 128px 0;
+}
+
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  .section   { padding: 96px 0; }
+}
+
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .section   { padding: 80px 0; }
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+   ───────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--blue-core);
+  color: var(--white);
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1;
+  padding: 0.875rem 1.875rem;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background-color: var(--blue-vivid);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(10, 122, 255, 0.35);
+}
+.btn-primary:focus-visible {
+  outline: 2px solid var(--blue-vivid);
+  outline-offset: 2px;
+}
+
+.btn-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1;
+  padding: 0.875rem 1.75rem;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.btn-ghost-dark:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* ─────────────────────────────────────────────
+   DOT-GRID TEXTURE (dark sections)
+   ───────────────────────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────── */
+.footer-link {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  display: inline-block;
+}
+.footer-link:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.footer-legal {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.5625rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL ANIMATION
+   ───────────────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-scale {
+  opacity: 0;
+  transform: scale(0.92) translateY(30px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in-scale.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .fade-in-left,
+  .fade-in-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
