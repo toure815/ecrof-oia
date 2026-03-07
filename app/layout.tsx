@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
-import OiaNav from "@/components/oia/OiaNav";
-import OiaFooter from "@/components/oia/OiaFooter";
 import "./globals.css";
 
 const inter = Inter({
@@ -48,11 +46,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
-      <body>
-        <OiaNav />
-        <div style={{ paddingTop: "64px" }}>{children}</div>
-        <OiaFooter />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
