@@ -3,117 +3,23 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-/* ───────────────────────────────────────────────
-   TYPES (matches n8n "Send results to Framer" shape)
-   ─────────────────────────────────────────────── */
-
-interface PillarScore {
-  raw_score: number;
-  max_score: number;
-  normalized_25: number;
-  pct: number;
-}
-
-interface Report {
-  success: boolean;
-  report: {
-    operationalIntelligenceScore: number;
-    operationalIntelligencePct: number;
-    sprintRecommendation: string;
-    identityLevel: string;
-    maturityLevel: string;
-    veosPhaseRecommendation: string;
-    pillars: {
-      discover: PillarScore;
-      design: PillarScore;
-      deploy: PillarScore;
-      optimize: PillarScore;
-      weakestPillar: string;
-      rankings: string[];
-    };
-    roi: {
-      hoursRecovered: number;
-      monthlySavings: number;
-      yearlySavings: number;
-      investmentCost: number;
-      annualROI: number;
-      minROI: number;
-    };
-    personal: {
-      name: string;
-      email: string;
-      company: string;
-    };
-  };
-}
-
-/* ───────────────────────────────────────────────
-   HELPERS
-   ─────────────────────────────────────────────── */
-
-const PILLAR_LABELS: Record<string, { label: string; color: string }> = {
-  discover: { label: "Discover", color: "#55BFFF" },
-  design:   { label: "Design",   color: "#0A7AFF" },
-  deploy:   { label: "Deploy",   color: "#00E89B" },
-  optimize: { label: "Optimize", color: "#A78BFA" },
-};
-
-function formatCurrency(n: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(n);
-}
-
-/* ───────────────────────────────────────────────
-   COMPONENT
-   ─────────────────────────────────────────────── */
-
 export default function ResultsPage() {
-  const [data, setData] = useState<Report | null>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const raw = sessionStorage.getItem("oia_results");
     if (raw) {
-      try { setData(JSON.parse(raw)); } catch { /* ignore */ }
+      try {
+        const data = JSON.parse(raw);
+        const p = data?.report?.personal || data?.personal || {};
+        setName(p.name || "");
+        setEmail(p.email || "");
+      } catch {
+        /* ignore */
+      }
     }
   }, []);
-
-  if (!data || !data.report) {
-    return (
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "var(--ink)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "rgba(255,255,255,0.5)",
-          fontFamily: "var(--font-inter), sans-serif",
-          padding: 24,
-          textAlign: "center",
-        }}
-      >
-        <div>
-          <p style={{ fontSize: "1.125rem", marginBottom: 16 }}>
-            No results found.
-          </p>
-          <a
-            href="/startaudit"
-            className="btn-primary"
-            style={{ fontSize: "0.9375rem" }}
-          >
-            Take the Audit
-          </a>
-        </div>
-      </div>
-    );
-  }
-
-  const r = data.report;
-  const pillars = r.pillars;
-  const roi = r.roi;
 
   return (
     <div
@@ -122,6 +28,8 @@ export default function ResultsPage() {
         background: "var(--ink)",
         color: "var(--white)",
         fontFamily: "var(--font-inter), sans-serif",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       {/* Header */}
@@ -135,201 +43,150 @@ export default function ResultsPage() {
         />
       </header>
 
+      {/* Body */}
       <main
         style={{
-          maxWidth: 720,
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "40px 24px 80px",
+          maxWidth: 600,
           margin: "0 auto",
-          padding: "24px 24px 80px",
+          width: "100%",
+          textAlign: "center",
         }}
       >
-        {/* Greeting */}
-        <p
+        {/* Checkmark icon */}
+        <div
           style={{
-            color: "rgba(255,255,255,0.45)",
-            fontSize: "0.875rem",
-            marginBottom: 8,
+            width: 72,
+            height: 72,
+            borderRadius: "50%",
+            background: "rgba(0,232,155,0.1)",
+            border: "2px solid var(--emerald)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 32,
           }}
         >
-          Results for {r.personal.name || r.personal.email}
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--emerald)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+
+        {/* Heading */}
+        <h1
+          style={{
+            fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+            lineHeight: 1.2,
+            marginBottom: 16,
+          }}
+        >
+          {name ? `${name}, your` : "Your"} audit is complete.
+        </h1>
+
+        {/* Subtext */}
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            color: "rgba(255,255,255,0.6)",
+            lineHeight: 1.65,
+            marginBottom: 40,
+            maxWidth: 480,
+          }}
+        >
+          We&rsquo;re building your personalized Operational Intelligence
+          Report right now. It includes your OI score, pillar breakdown, ROI
+          projection, and a recommended sprint — all in one PDF.
         </p>
 
-        {/* OI Score */}
-        <section style={{ textAlign: "center", marginBottom: 64 }}>
-          <h1
-            style={{
-              fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
-              fontWeight: 800,
-              letterSpacing: "-0.03em",
-              color: "var(--blue-bright)",
-              lineHeight: 1,
-              marginBottom: 8,
-            }}
-          >
-            {r.operationalIntelligencePct}
-          </h1>
-          <p
-            style={{
-              fontFamily: "var(--font-jetbrains-mono), monospace",
-              fontSize: "0.6875rem",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.4)",
-              marginBottom: 24,
-            }}
-          >
-            Operational Intelligence Score
-          </p>
-
-          {/* Identity + Maturity */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 12,
-              justifyContent: "center",
-            }}
-          >
-            {[
-              { label: "Identity", value: r.identityLevel },
-              { label: "Maturity", value: r.maturityLevel },
-              { label: "VEOS Phase", value: r.veosPhaseRecommendation },
-            ].map((item) => (
-              <span
-                key={item.label}
-                style={{
-                  padding: "8px 16px",
-                  borderRadius: 8,
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  fontSize: "0.8125rem",
-                }}
-              >
-                <span style={{ color: "rgba(255,255,255,0.45)" }}>
-                  {item.label}:{" "}
-                </span>
-                <span style={{ fontWeight: 600 }}>{item.value}</span>
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* Pillar Scores */}
-        <section style={{ marginBottom: 56 }}>
-          <h3
-            style={{
-              fontSize: "0.75rem",
-              fontFamily: "var(--font-jetbrains-mono), monospace",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.35)",
-              marginBottom: 20,
-            }}
-          >
-            Pillar Breakdown
-          </h3>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {(["discover", "design", "deploy", "optimize"] as const).map(
-              (key) => {
-                const p = pillars[key] as PillarScore;
-                const meta = PILLAR_LABELS[key];
-                const isWeakest = pillars.weakestPillar === key;
-                return (
-                  <div key={key}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        marginBottom: 6,
-                      }}
-                    >
-                      <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>
-                        {meta.label}
-                        {isWeakest && (
-                          <span
-                            style={{
-                              marginLeft: 8,
-                              fontSize: "0.6875rem",
-                              color: "#f87171",
-                              fontWeight: 500,
-                            }}
-                          >
-                            Weakest
-                          </span>
-                        )}
-                      </span>
-                      <span
-                        style={{
-                          fontFamily: "var(--font-jetbrains-mono), monospace",
-                          fontSize: "0.8125rem",
-                          color: "rgba(255,255,255,0.6)",
-                        }}
-                      >
-                        {p.pct}%
-                      </span>
-                    </div>
-                    <div
-                      style={{
-                        height: 8,
-                        borderRadius: 4,
-                        background: "rgba(255,255,255,0.08)",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <div
-                        style={{
-                          height: "100%",
-                          width: `${p.pct}%`,
-                          background: meta.color,
-                          borderRadius: 4,
-                          transition: "width 0.6s ease",
-                        }}
-                      />
-                    </div>
-                  </div>
-                );
-              }
-            )}
-          </div>
-        </section>
-
-        {/* Sprint Recommendation */}
-        <section
+        {/* Email callout card */}
+        <div
           style={{
-            marginBottom: 56,
-            padding: 32,
+            width: "100%",
+            padding: "28px 24px",
             borderRadius: 16,
             background: "rgba(10,122,255,0.06)",
             border: "1px solid rgba(10,122,255,0.15)",
-            textAlign: "center",
+            marginBottom: 40,
           }}
         >
-          <p
+          <div
             style={{
-              fontFamily: "var(--font-jetbrains-mono), monospace",
-              fontSize: "0.6875rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--blue-bright)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 10,
               marginBottom: 12,
             }}
           >
-            Recommended Sprint
-          </p>
-          <h2
+            {/* Mail icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--blue-bright)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="M22 7l-10 7L2 7" />
+            </svg>
+            <span
+              style={{
+                fontFamily: "var(--font-jetbrains-mono), monospace",
+                fontSize: "0.6875rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "var(--blue-bright)",
+              }}
+            >
+              Check Your Inbox
+            </span>
+          </div>
+          <p
             style={{
-              fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
+              fontSize: "0.9375rem",
+              color: "rgba(255,255,255,0.55)",
+              lineHeight: 1.6,
             }}
           >
-            {r.sprintRecommendation}
-          </h2>
-        </section>
+            Your full report will be delivered to{" "}
+            {email ? (
+              <span style={{ color: "var(--white)", fontWeight: 600 }}>
+                {email}
+              </span>
+            ) : (
+              "your email"
+            )}{" "}
+            within the next few minutes.
+          </p>
+        </div>
 
-        {/* ROI */}
-        <section style={{ marginBottom: 56 }}>
+        {/* What to expect */}
+        <div
+          style={{
+            width: "100%",
+            textAlign: "left",
+            marginBottom: 48,
+          }}
+        >
           <h3
             style={{
               fontSize: "0.75rem",
@@ -340,78 +197,66 @@ export default function ResultsPage() {
               marginBottom: 20,
             }}
           >
-            ROI Projection
+            What&rsquo;s in your report
           </h3>
-
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+              display: "flex",
+              flexDirection: "column",
               gap: 12,
             }}
           >
             {[
-              { label: "Hours Recovered / Year", value: `${roi.hoursRecovered}` },
-              { label: "Monthly Savings", value: formatCurrency(roi.monthlySavings) },
-              { label: "Yearly Savings", value: formatCurrency(roi.yearlySavings) },
-              { label: "Sprint Investment", value: formatCurrency(roi.investmentCost) },
-              { label: "Annual ROI", value: `${roi.annualROI}x` },
+              "Your Operational Intelligence Score",
+              "Pillar-by-pillar breakdown (Discover, Design, Deploy, Optimize)",
+              "Your weakest operational area and where to focus first",
+              "ROI projection — hours recovered and dollars saved",
+              "Recommended VEOS sprint to start closing gaps",
             ].map((item) => (
               <div
-                key={item.label}
+                key={item}
                 style={{
-                  padding: 20,
-                  borderRadius: 12,
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 12,
+                  padding: "14px 16px",
+                  borderRadius: 10,
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.06)",
                 }}
               >
-                <p
+                <span
                   style={{
-                    fontSize: "0.6875rem",
-                    fontFamily: "var(--font-jetbrains-mono), monospace",
-                    color: "rgba(255,255,255,0.4)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: 8,
+                    color: "var(--emerald)",
+                    fontSize: "0.875rem",
+                    lineHeight: 1.6,
+                    flexShrink: 0,
                   }}
                 >
-                  {item.label}
-                </p>
-                <p
+                  &bull;
+                </span>
+                <span
                   style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    letterSpacing: "-0.02em",
+                    fontSize: "0.9375rem",
+                    color: "rgba(255,255,255,0.7)",
+                    lineHeight: 1.5,
                   }}
                 >
-                  {item.value}
-                </p>
+                  {item}
+                </span>
               </div>
             ))}
           </div>
-        </section>
+        </div>
 
         {/* CTA */}
-        <section style={{ textAlign: "center", paddingTop: 16 }}>
-          <p
-            style={{
-              color: "rgba(255,255,255,0.5)",
-              fontSize: "0.9375rem",
-              marginBottom: 24,
-              lineHeight: 1.6,
-            }}
-          >
-            Ready to turn these insights into action?
-          </p>
-          <a
-            href="/"
-            className="btn-primary"
-            style={{ fontSize: "1rem", padding: "18px 40px" }}
-          >
-            See How We Can Help
-          </a>
-        </section>
+        <a
+          href="/"
+          className="btn-primary"
+          style={{ fontSize: "1rem", padding: "18px 40px" }}
+        >
+          Back to Ecrof Media
+        </a>
       </main>
     </div>
   );
