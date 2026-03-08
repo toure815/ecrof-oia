@@ -3,6 +3,23 @@ import Image from "next/image";
 export default function OiaHero() {
   return (
     <section className="relative bg-ink overflow-hidden">
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source
+          src="https://videos.pexels.com/video-files/15196747/15196747-uhd_2560_1440_30fps.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-ink/70" />
+
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(10,122,255,0.08),transparent_70%)]" />
