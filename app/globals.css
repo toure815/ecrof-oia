@@ -49,6 +49,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -56,6 +57,7 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--gray-700);
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -94,8 +96,13 @@ p { margin: 0; }
 }
 
 @media (max-width: 600px) {
-  .container { padding: 0 20px; }
-  .section   { padding: 80px 0; }
+  .container { padding: 0 16px; }
+  .section   { padding: 64px 0; }
+}
+
+@media (max-width: 400px) {
+  .container { padding: 0 12px; }
+  .section   { padding: 48px 0; }
 }
 
 /* ─────────────────────────────────────────────
@@ -119,6 +126,7 @@ p { margin: 0; }
   text-decoration: none;
   transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn-primary:hover {
   background-color: var(--blue-vivid);
@@ -128,6 +136,16 @@ p { margin: 0; }
 .btn-primary:focus-visible {
   outline: 2px solid var(--blue-vivid);
   outline-offset: 2px;
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .btn-primary {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 .btn-ghost-dark {
@@ -148,10 +166,18 @@ p { margin: 0; }
   background: transparent;
   transition: border-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn-ghost-dark:hover {
   border-color: rgba(255, 255, 255, 0.4);
   color: rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 600px) {
+  .btn-ghost-dark {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 /* ─────────────────────────────────────────────
@@ -174,10 +200,18 @@ p { margin: 0; }
   text-decoration: none;
   transition: color 0.15s ease;
   display: inline-block;
+  -webkit-tap-highlight-color: transparent;
 }
 .footer-link:hover {
   color: rgba(255, 255, 255, 0.85);
 }
+
+@media (max-width: 600px) {
+  .footer-link {
+    font-size: 0.8125rem;
+  }
+}
+
 .footer-legal {
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.5625rem;

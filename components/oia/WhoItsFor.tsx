@@ -18,7 +18,7 @@ export default function WhoItsFor() {
   return (
     <section className="bg-white section">
       <div className="container">
-        <ScrollReveal className="flex flex-col items-center text-center mb-14">
+        <ScrollReveal className="flex flex-col items-center text-center mb-10 sm:mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-900 text-white font-mono text-xs tracking-widest uppercase mb-6">
             Fit Check
           </span>
@@ -27,10 +27,10 @@ export default function WhoItsFor() {
           </h2>
         </ScrollReveal>
 
-        <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
           <ScrollReveal delay={100}>
             <div>
-              <h3 className="text-gray-900 font-bold text-lg mb-6">This Audit Is For:</h3>
+              <h3 className="text-gray-900 font-bold text-lg mb-5 sm:mb-6">This Audit Is For:</h3>
               <div className="space-y-4">
                 {FOR_LIST.map((item) => (
                   <div key={item} className="flex items-start gap-3">
@@ -46,7 +46,7 @@ export default function WhoItsFor() {
 
           <ScrollReveal delay={250}>
             <div>
-              <h3 className="text-gray-900 font-bold text-lg mb-6">
+              <h3 className="text-gray-900 font-bold text-lg mb-5 sm:mb-6">
                 This Audit Is <em>Not</em> For:
               </h3>
               <div className="space-y-4">
@@ -64,8 +64,8 @@ export default function WhoItsFor() {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal delay={400} className="text-center mt-12">
-          <p className="text-gray-900 font-bold text-base">
+        <ScrollReveal delay={400} className="text-center mt-10 sm:mt-12">
+          <p className="text-gray-900 font-bold text-sm sm:text-base">
             This audit is designed to protect your next move — not validate your current one.
           </p>
         </ScrollReveal>

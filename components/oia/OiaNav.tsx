@@ -16,8 +16,8 @@ export default function OiaNav() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-lg">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-8">
-        <Link href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4 sm:gap-8">
+        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 no-underline flex-shrink-0">
           <Image
             src="/ecrof_logo_transparent.png"
             alt="Ecrof Media"
@@ -26,7 +26,7 @@ export default function OiaNav() {
             className="object-contain"
             priority
           />
-          <span className="font-sans font-extrabold text-lg tracking-tighter text-white">
+          <span className="font-sans font-extrabold text-base sm:text-lg tracking-tighter text-white">
             Ecrof Media
           </span>
         </Link>
@@ -43,8 +43,8 @@ export default function OiaNav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 flex-shrink-0">
-          <a href="#pricing" className="btn-primary text-sm">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          <a href="#pricing" className="btn-primary text-xs sm:text-sm px-3 py-2 sm:px-[1.875rem] sm:py-[0.875rem]">
             Start Your Audit
           </a>
 
@@ -68,7 +68,7 @@ export default function OiaNav() {
       </div>
 
       {mobileOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-ink px-6 pb-3">
+        <div className="lg:hidden border-t border-white/10 bg-ink px-4 sm:px-6 pb-3">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import OiaNav from "@/components/oia/OiaNav";
 import OiaFooter from "@/components/oia/OiaFooter";
@@ -25,6 +25,12 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Operational Intelligence Audit — Ecrof Media Co.",

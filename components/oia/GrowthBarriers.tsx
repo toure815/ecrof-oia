@@ -52,25 +52,25 @@ export default function GrowthBarriers() {
   return (
     <section className="bg-white section">
       <div className="container">
-        <ScrollReveal className="flex flex-col items-center text-center mb-14">
+        <ScrollReveal className="flex flex-col items-center text-center mb-10 sm:mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-900 text-white font-mono text-xs tracking-widest uppercase mb-6">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             Growth Blockers
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
-            Every Founder Hits These
-            <br />
+            Every Founder Hits These{" "}
+            <br className="hidden sm:block" />
             <em>3 Growth Barriers</em>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl">
+          <p className="text-gray-500 text-base sm:text-lg max-w-xl">
             Everything you need to automate operations, boost clarity, and work smarter
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {BARRIERS.map((barrier, i) => (
             <ScrollReveal key={barrier.title} delay={i * 100} animation="fade-in-scale">
-              <div className="bg-gray-900 rounded-2xl p-7 h-full border border-white/5 transition-transform duration-300 hover:-translate-y-1">
+              <div className="bg-gray-900 rounded-2xl p-6 sm:p-7 h-full border border-white/5 transition-transform duration-300 hover:-translate-y-1">
                 {barrier.icons}
                 <h3 className="text-white font-bold text-lg mb-3">{barrier.title}</h3>
                 <p className="text-white/50 text-sm leading-relaxed">{barrier.description}</p>
@@ -79,7 +79,7 @@ export default function GrowthBarriers() {
           ))}
         </div>
 
-        <ScrollReveal delay={400} className="flex justify-center mt-12">
+        <ScrollReveal delay={400} className="flex justify-center mt-10 sm:mt-12">
           <a href="#pricing" className="inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold text-sm px-8 py-3.5 rounded-full transition-all duration-200 hover:bg-gray-800 hover:-translate-y-0.5">
             Start Your Audit
           </a>

@@ -12,8 +12,8 @@ const FOOTER_LINKS = [
 
 export default function OiaFooter() {
   return (
-    <footer className="bg-ink border-t border-white/8 py-12">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+    <footer className="bg-ink border-t border-white/8 py-10 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-6 sm:gap-8">
         <Link href="/" className="flex items-center gap-2.5 no-underline">
           <Image
             src="/ecrof_logo_transparent.png"
@@ -35,13 +35,13 @@ export default function OiaFooter() {
           </div>
         </Link>
 
-        <nav className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3">
+        <nav className="flex flex-wrap justify-center md:justify-end gap-x-6 sm:gap-x-8 gap-y-3">
           {FOOTER_LINKS.map((link) => (
             link.href.startsWith("/") || link.href.startsWith("mailto") ? (
               <Link
                 key={link.label}
                 href={link.href}
-                className="footer-link text-sm"
+                className="footer-link text-xs sm:text-sm"
               >
                 {link.label}
               </Link>
@@ -49,7 +49,7 @@ export default function OiaFooter() {
               <a
                 key={link.label}
                 href={link.href}
-                className="footer-link text-sm"
+                className="footer-link text-xs sm:text-sm"
               >
                 {link.label}
               </a>
@@ -58,7 +58,7 @@ export default function OiaFooter() {
         </nav>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mt-8 pt-6 border-t border-white/8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-6 sm:mt-8 pt-6 border-t border-white/8">
         <p className="footer-legal text-center">
           &copy; {new Date().getFullYear()} Ecrof Media Company. All rights reserved.
         </p>

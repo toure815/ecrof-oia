@@ -22,53 +22,53 @@ export default function OiaHero() {
 
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(10,122,255,0.08),transparent_70%)]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[500px] md:h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(10,122,255,0.08),transparent_70%)]" />
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-ink to-transparent" />
       </div>
 
       {/* Dot grid texture */}
       <div className="absolute inset-0 dot-grid" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 md:py-44 flex flex-col items-center text-center gap-8">
+      <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-32 md:py-44 flex flex-col items-center text-center gap-6 sm:gap-8">
         {/* Ecrof icon */}
-        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-sm">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-sm">
           <Image
             src="/ecrof_logo_transparent.png"
             alt="Ecrof"
-            width={48}
-            height={48}
+            width={40}
+            height={40}
             className="object-contain"
           />
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
-          Discover What&#39;s Quietly
-          <br />
-          Draining Your <em>Time, Money,</em>
-          <br />
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
+          Discover What&#39;s Quietly{" "}
+          <br className="hidden sm:block" />
+          Draining Your <em>Time, Money,</em>{" "}
+          <br className="hidden sm:block" />
           <em>& Momentum.</em>
         </h1>
 
         {/* Pill label */}
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-blue-bright font-mono text-xs tracking-widest uppercase">
+        <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-blue-bright font-mono text-[10px] sm:text-xs tracking-widest uppercase">
           Your Operational Intelligence Partner
         </span>
 
         {/* Subhead */}
-        <p className="text-white/60 text-lg md:text-xl max-w-2xl leading-relaxed">
+        <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
           A 12 minute operational intelligence audit that reveals where decisions stall,
           systems break, and growth leaks — before you spend another dollar fixing the wrong thing.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
-          <a href="#pricing" className="btn-primary text-base px-8 py-4">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mt-2 w-full sm:w-auto">
+          <a href="#pricing" className="btn-primary text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 w-full sm:w-auto">
             Start Your Audit
           </a>
           <a
             href="#what-it-measures"
-            className="btn-ghost-dark text-base"
+            className="btn-ghost-dark text-sm sm:text-base w-full sm:w-auto"
           >
             Learn More
           </a>

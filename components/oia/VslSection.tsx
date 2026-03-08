@@ -13,33 +13,33 @@ export default function VslSection() {
           <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
             Why Most Fixes <em>Don&#39;t Work</em>
           </h2>
-          <p className="text-gray-500 text-base max-w-xl mb-10">
+          <p className="text-gray-500 text-sm sm:text-base max-w-xl mb-8 sm:mb-10">
             In under 6 minutes, you&#39;ll understand where your business is leaking time, money, and momentum and why adding more effort, tools, or people often makes it worse.
           </p>
         </ScrollReveal>
 
         {/* Video embed placeholder */}
         <ScrollReveal delay={150} animation="fade-in-scale" className="max-w-3xl mx-auto">
-          <div className="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden group cursor-pointer border border-gray-200">
+          <div className="relative aspect-video bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden group cursor-pointer border border-gray-200">
             {/* Replace this div with an actual video embed or thumbnail */}
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900">
               <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" className="sm:w-8 sm:h-8">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
-                <p className="text-white/60 text-2xl md:text-4xl font-extrabold tracking-tight">BUILT TO THINK</p>
+                <p className="text-white/60 text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight">BUILT TO THINK</p>
               </div>
             </div>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={300} className="flex flex-col items-center mt-10 gap-4">
-          <a href="#pricing" className="inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 hover:bg-gray-800 hover:-translate-y-0.5">
+        <ScrollReveal delay={300} className="flex flex-col items-center mt-8 sm:mt-10 gap-3 sm:gap-4">
+          <a href="#pricing" className="inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 rounded-full transition-all duration-200 hover:bg-gray-800 hover:-translate-y-0.5 w-full sm:w-auto max-w-xs sm:max-w-none">
             Start the Audit — $197
           </a>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-xs sm:text-sm text-center">
             Takes &lt; 12 minutes &bull; Immediate results &bull; Private & Confidential
           </p>
         </ScrollReveal>

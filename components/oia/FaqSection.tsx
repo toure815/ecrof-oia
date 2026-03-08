@@ -38,9 +38,9 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
     <div className="border-b border-gray-200 last:border-b-0">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-5 text-left cursor-pointer group"
+        className="w-full flex items-center justify-between py-4 sm:py-5 text-left cursor-pointer group"
       >
-        <span className="text-gray-900 font-semibold text-base pr-4 group-hover:text-blue-core transition-colors">
+        <span className="text-gray-900 font-semibold text-sm sm:text-base pr-4 group-hover:text-blue-core transition-colors">
           {question}
         </span>
         <svg
@@ -57,7 +57,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ${
-          open ? "max-h-96 pb-5" : "max-h-0"
+          open ? "max-h-96 pb-4 sm:pb-5" : "max-h-0"
         }`}
       >
         <p className="text-gray-500 text-sm leading-relaxed pr-8">{answer}</p>
@@ -70,22 +70,22 @@ export default function FaqSection() {
   return (
     <section className="bg-white section">
       <div className="container">
-        <ScrollReveal className="flex flex-col items-center text-center mb-14">
+        <ScrollReveal className="flex flex-col items-center text-center mb-10 sm:mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-900 text-white font-mono text-xs tracking-widest uppercase mb-6">
             Before You Start
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
             Common Questions <em>Founders Ask</em>
           </h2>
-          <p className="text-gray-500 text-base max-w-xl">
+          <p className="text-gray-500 text-sm sm:text-base max-w-xl">
             Clarity on what this audit does and what it intentionally doesn&#39;t.
           </p>
         </ScrollReveal>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 sm:gap-8">
           {/* Contact card */}
           <ScrollReveal delay={100}>
-            <div className="bg-gray-900 rounded-2xl p-8 text-center border border-white/5 h-fit">
+            <div className="bg-gray-900 rounded-2xl p-6 sm:p-8 text-center border border-white/5 h-fit order-2 md:order-1">
               <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" />
@@ -108,7 +108,7 @@ export default function FaqSection() {
 
           {/* FAQ accordion */}
           <ScrollReveal delay={200}>
-            <div className="bg-white rounded-2xl">
+            <div className="bg-white rounded-2xl order-1 md:order-2">
               {FAQS.map((faq) => (
                 <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
               ))}
