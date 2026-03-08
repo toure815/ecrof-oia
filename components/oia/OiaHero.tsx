@@ -18,7 +18,7 @@ export default function OiaHero() {
       </video>
 
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-ink/70" />
+      <div className="absolute inset-0 bg-ink/85" />
 
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
