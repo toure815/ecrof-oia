@@ -18,20 +18,18 @@ export default function VslSection() {
           </p>
         </ScrollReveal>
 
-        {/* Video embed placeholder */}
-        <ScrollReveal delay={150} animation="fade-in-scale" className="max-w-3xl mx-auto">
-          <div className="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden group cursor-pointer border border-gray-200">
-            {/* Replace this div with an actual video embed or thumbnail */}
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900">
-              <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <p className="text-white/60 text-2xl md:text-4xl font-extrabold tracking-tight">BUILT TO THINK</p>
-              </div>
-            </div>
+        {/* YouTube video embed */}
+        <ScrollReveal delay={150} animation="fade-in-scale" className="max-w-[950px] mx-auto">
+          <div className="rounded-2xl overflow-hidden">
+            <iframe
+              width="100%"
+              height="534"
+              src="https://www.youtube.com/embed/1-WJxwQlGVY?rel=0&modestbranding=1"
+              title="Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         </ScrollReveal>
 
