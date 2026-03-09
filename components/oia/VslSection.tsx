@@ -18,13 +18,15 @@ export default function VslSection() {
           </p>
         </ScrollReveal>
 
-        {/* YouTube video embed */}
+        {/* YouTube video embed — CSS overlay hides top-bar branding */}
         <ScrollReveal delay={150} animation="fade-in-scale" className="max-w-[950px] mx-auto">
-          <div className="rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Overlay to hide YouTube title / share / watch-on-YouTube bar */}
+            <div className="absolute top-0 left-0 right-0 h-16 bg-black z-10 pointer-events-none" />
             <iframe
               width="100%"
               height="534"
-              src="https://www.youtube.com/embed/1-WJxwQlGVY?rel=0&modestbranding=1"
+              src="https://www.youtube-nocookie.com/embed/1-WJxwQlGVY?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
               title="Video"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
