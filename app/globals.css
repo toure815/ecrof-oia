@@ -150,6 +150,35 @@ p { margin: 0; }
 }
 
 /* ─────────────────────────────────────────────
+   VSL SECTION — SPACING & VIDEO
+   ───────────────────────────────────────────── */
+.vsl-section {
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
+
+.vsl-video-wrap {
+  margin-top: 32px;
+  margin-bottom: 48px;
+}
+
+.vsl-video-container {
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+@media (min-width: 640px) {
+  .vsl-section {
+    padding-top: 96px;
+    padding-bottom: 128px;
+  }
+
+  .vsl-video-wrap {
+    margin-top: 40px;
+  }
+}
+
+/* ─────────────────────────────────────────────
    BUTTONS
    ───────────────────────────────────────────── */
 .btn-primary {
