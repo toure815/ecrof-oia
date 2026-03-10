@@ -101,6 +101,50 @@ p { margin: 0; }
 /* ─────────────────────────────────────────────
    BUTTONS
    ───────────────────────────────────────────── */
+/* ─────────────────────────────────────────────
+   HERO — MOBILE-FIRST SPACING & LAYOUT
+   ───────────────────────────────────────────── */
+.hero-content {
+  max-height: 65vh;
+}
+
+.hero-eyebrow {
+  margin-bottom: 16px;
+}
+
+.hero-headline {
+  margin-bottom: 16px;
+}
+
+.hero-subhead {
+  margin-bottom: 24px;
+}
+
+.hero-ctas {
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .hero-content {
+    max-height: none;
+  }
+
+  .hero-headline {
+    margin-bottom: 20px;
+  }
+
+  .hero-subhead {
+    margin-bottom: 28px;
+  }
+
+  .hero-ctas {
+    gap: 16px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+   ───────────────────────────────────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -112,8 +156,8 @@ p { margin: 0; }
   font-weight: 600;
   font-size: 0.9375rem;
   line-height: 1;
-  padding: 0.875rem 1.875rem;
-  border-radius: 40px;
+  padding: 0.875rem 1.5rem;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
   text-decoration: none;
