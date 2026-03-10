@@ -57,6 +57,11 @@ export default function OiaHero() {
             See How It Works
           </a>
         </div>
+
+        {/* Trust micro-line */}
+        <p className="mt-5 text-white/30 text-xs md:text-sm tracking-wide">
+          Built to uncover the operational leaks slowing your business.
+        </p>
       </div>
 
       {/* Bottom fade to white */}
