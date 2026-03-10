@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function OiaHero() {
   return (
     <section className="relative bg-ink overflow-hidden">
@@ -29,50 +27,41 @@ export default function OiaHero() {
       {/* Dot grid texture */}
       <div className="absolute inset-0 dot-grid" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 md:py-44 flex flex-col items-center text-center gap-8">
-        {/* Ecrof icon */}
-        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-sm">
-          <Image
-            src="/ecrof_logo_transparent.png"
-            alt="Ecrof"
-            width={48}
-            height={48}
-            className="object-contain"
-          />
-        </div>
-
-        {/* Headline */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
-          Discover What&#39;s Quietly
-          <br />
-          Draining Your <em>Time, Money,</em>
-          <br />
-          <em>& Momentum.</em>
-        </h1>
-
-        {/* Pill label */}
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-blue-bright font-mono text-xs tracking-widest uppercase">
-          Your Operational Intelligence Partner
+      <div className="relative z-10 max-w-4xl mx-auto px-6 pt-16 pb-20 md:pt-44 md:pb-44 flex flex-col items-center text-center hero-content">
+        {/* Eyebrow label */}
+        <span className="hero-eyebrow inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-blue-bright font-mono text-xs tracking-[0.1em] uppercase">
+          12-Minute Operational Audit
         </span>
 
+        {/* Headline */}
+        <h1 className="hero-headline text-[32px] md:text-5xl lg:text-6xl font-bold text-white leading-[1.2] md:leading-[1.1] tracking-tight">
+          Find What&#39;s Draining
+          <br />
+          Your <em>Growth</em>
+        </h1>
+
         {/* Subhead */}
-        <p className="text-white/60 text-lg md:text-xl max-w-2xl leading-relaxed">
-          A 12 minute operational intelligence audit that reveals where decisions stall,
-          systems break, and growth leaks — before you spend another dollar fixing the wrong thing.
+        <p className="hero-subhead text-white/60 text-base md:text-xl max-w-[520px] leading-[1.5] md:leading-relaxed">
+          Uncover where time, money, and momentum are being lost — before you spend more fixing the wrong thing.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
-          <a href="#pricing" className="btn-primary text-base px-8 py-4">
+        <div className="hero-ctas flex flex-col sm:flex-row items-center w-full sm:w-auto">
+          <a href="#pricing" className="btn-primary text-base px-8 py-3.5 w-full sm:w-auto">
             Start Your Audit
           </a>
           <a
             href="#what-it-measures"
             className="btn-ghost-dark text-base"
           >
-            Learn More
+            See How It Works
           </a>
         </div>
+
+        {/* Trust micro-line */}
+        <p className="mt-5 text-white/30 text-xs md:text-sm tracking-wide">
+          Built to uncover the operational leaks slowing your business.
+        </p>
       </div>
 
       {/* Bottom fade to white */}
