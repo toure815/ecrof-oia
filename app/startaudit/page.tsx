@@ -13,49 +13,49 @@ type Step =
   | { type: "contact" };
 
 const QUESTIONS: Step[] = [
-  // ── DISCOVER — Clarity & Flow ──
-  { type: "yesno", id: "q1",  category: "Clarity & Flow", question: "Do decisions frequently stall because your team isn't clear on how you want choices made?" },
-  { type: "yesno", id: "q2",  category: "Clarity & Flow", question: "Do you have a clear structure for who makes which decisions across your operations?" },
-  { type: "yesno", id: "q3",  category: "Clarity & Flow", question: "Do you consistently communicate how decisions should flow so people don't rely on guesswork?" },
-  { type: "yesno", id: "q4",  category: "Clarity & Flow", question: "Do tasks slow down because key steps in your workflow live in people's heads instead of in a system?" },
-  { type: "yesno", id: "q5",  category: "Clarity & Flow", question: "Does your team clearly understand how work moves from start to finish?" },
-  { type: "yesno", id: "q6",  category: "Clarity & Flow", question: "Do you regularly review workflows to catch breakdowns before they cause drag?" },
-  { type: "yesno", id: "q7",  category: "Clarity & Flow", question: "Do tasks bounce back to you because roles aren't defined tightly enough?" },
-  { type: "yesno", id: "q8",  category: "Clarity & Flow", question: "Does your team know exactly what \"success\" looks like in their role?" },
-  { type: "yesno", id: "q9",  category: "Clarity & Flow", question: "Do you have documented role responsibilities instead of verbal agreements?" },
+  // ── DIAGNOSE — Clarity & Flow ──
+  { type: "yesno", id: "q1",  category: "Diagnose", question: "Do decisions frequently stall because your team isn't clear on how you want choices made?" },
+  { type: "yesno", id: "q2",  category: "Diagnose", question: "Do you have a clear structure for who makes which decisions across your operations?" },
+  { type: "yesno", id: "q3",  category: "Diagnose", question: "Do you consistently communicate how decisions should flow so people don't rely on guesswork?" },
+  { type: "yesno", id: "q4",  category: "Diagnose", question: "Do tasks slow down because key steps in your workflow live in people's heads instead of in a system?" },
+  { type: "yesno", id: "q5",  category: "Diagnose", question: "Does your team clearly understand how work moves from start to finish?" },
+  { type: "yesno", id: "q6",  category: "Diagnose", question: "Do you regularly review workflows to catch breakdowns before they cause drag?" },
+  { type: "yesno", id: "q7",  category: "Diagnose", question: "Do tasks bounce back to you because roles aren't defined tightly enough?" },
+  { type: "yesno", id: "q8",  category: "Diagnose", question: "Does your team know exactly what \"success\" looks like in their role?" },
+  { type: "yesno", id: "q9",  category: "Diagnose", question: "Do you have documented role responsibilities instead of verbal agreements?" },
 
-  // ── DESIGN — Structure & Systems ──
-  { type: "yesno", id: "q10", category: "Structure & Systems", question: "Do projects regularly get stuck because workflows aren't mapped or standardized?" },
-  { type: "yesno", id: "q11", category: "Structure & Systems", question: "Do you have consistent steps your team follows for recurring tasks?" },
-  { type: "yesno", id: "q12", category: "Structure & Systems", question: "Are workflows simple enough that someone new could follow them without asking you?" },
-  { type: "yesno", id: "q13", category: "Structure & Systems", question: "Do you lose time because your tools don't talk to each other or require constant manual work?" },
-  { type: "yesno", id: "q14", category: "Structure & Systems", question: "Does your team use a connected tool stack instead of a patchwork of disconnected apps?" },
-  { type: "yesno", id: "q15", category: "Structure & Systems", question: "Are tools chosen based on strategy instead of convenience or crisis?" },
-  { type: "yesno", id: "q16", category: "Structure & Systems", question: "Do tasks rely on \"tribal knowledge\" because SOPs are missing or outdated?" },
-  { type: "yesno", id: "q17", category: "Structure & Systems", question: "Do your SOPs actually reflect how the work gets done?" },
-  { type: "yesno", id: "q18", category: "Structure & Systems", question: "Do you update SOPs when systems change?" },
+  // ── DEFINE — Structure & Systems ──
+  { type: "yesno", id: "q10", category: "Define", question: "Do projects regularly get stuck because workflows aren't mapped or standardized?" },
+  { type: "yesno", id: "q11", category: "Define", question: "Do you have consistent steps your team follows for recurring tasks?" },
+  { type: "yesno", id: "q12", category: "Define", question: "Are workflows simple enough that someone new could follow them without asking you?" },
+  { type: "yesno", id: "q13", category: "Define", question: "Do you lose time because your tools don't talk to each other or require constant manual work?" },
+  { type: "yesno", id: "q14", category: "Define", question: "Does your team use a connected tool stack instead of a patchwork of disconnected apps?" },
+  { type: "yesno", id: "q15", category: "Define", question: "Are tools chosen based on strategy instead of convenience or crisis?" },
+  { type: "yesno", id: "q16", category: "Define", question: "Do tasks rely on \"tribal knowledge\" because SOPs are missing or outdated?" },
+  { type: "yesno", id: "q17", category: "Define", question: "Do your SOPs actually reflect how the work gets done?" },
+  { type: "yesno", id: "q18", category: "Define", question: "Do you update SOPs when systems change?" },
 
-  // ── DEPLOY — Execution & Delegation ──
-  { type: "yesno", id: "q19", category: "Execution & Delegation", question: "Do you or your team still perform repetitive manual tasks that should already be automated?" },
-  { type: "yesno", id: "q20", category: "Execution & Delegation", question: "Are your current workflows stable enough to automate without breaking?" },
-  { type: "yesno", id: "q21", category: "Execution & Delegation", question: "Do you evaluate repeatable tasks for automation opportunities at least quarterly?" },
-  { type: "yesno", id: "q22", category: "Execution & Delegation", question: "Do you volunteer or jump into tasks to help complete projects?" },
-  { type: "yesno", id: "q23", category: "Execution & Delegation", question: "Can delegated tasks be completed without you reviewing or editing heavily?" },
-  { type: "yesno", id: "q24", category: "Execution & Delegation", question: "Do you have a structure for delegating work with expectations, examples, and feedback?" },
-  { type: "yesno", id: "q25", category: "Execution & Delegation", question: "Do deadlines slip or operations depend on heroic effort?" },
-  { type: "yesno", id: "q26", category: "Execution & Delegation", question: "Does your team consistently deliver work without micromanagement or reminders?" },
-  { type: "yesno", id: "q27", category: "Execution & Delegation", question: "Do you track execution issues so you can correct patterns instead of individuals?" },
+  // ── DESIGN — Execution & Delegation ──
+  { type: "yesno", id: "q19", category: "Design", question: "Do you or your team still perform repetitive manual tasks that should already be automated?" },
+  { type: "yesno", id: "q20", category: "Design", question: "Are your current workflows stable enough to automate without breaking?" },
+  { type: "yesno", id: "q21", category: "Design", question: "Do you evaluate repeatable tasks for automation opportunities at least quarterly?" },
+  { type: "yesno", id: "q22", category: "Design", question: "Do you volunteer or jump into tasks to help complete projects?" },
+  { type: "yesno", id: "q23", category: "Design", question: "Can delegated tasks be completed without you reviewing or editing heavily?" },
+  { type: "yesno", id: "q24", category: "Design", question: "Do you have a structure for delegating work with expectations, examples, and feedback?" },
+  { type: "yesno", id: "q25", category: "Design", question: "Do deadlines slip or operations depend on heroic effort?" },
+  { type: "yesno", id: "q26", category: "Design", question: "Does your team consistently deliver work without micromanagement or reminders?" },
+  { type: "yesno", id: "q27", category: "Design", question: "Do you track execution issues so you can correct patterns instead of individuals?" },
 
-  // ── OPTIMIZE — Momentum & Capacity ──
-  { type: "yesno", id: "q28", category: "Momentum & Capacity", question: "Do you struggle to measure what's really happening because key metrics aren't tracked?" },
-  { type: "yesno", id: "q29", category: "Momentum & Capacity", question: "Do dashboards or reports help you make faster, clearer decisions?" },
-  { type: "yesno", id: "q30", category: "Momentum & Capacity", question: "Do you review operational performance at least monthly?" },
-  { type: "yesno", id: "q31", category: "Momentum & Capacity", question: "Do work delays come from bottlenecks you haven't fully identified or solved yet?" },
-  { type: "yesno", id: "q32", category: "Momentum & Capacity", question: "Does your team surface blockers quickly so they don't pile up?" },
-  { type: "yesno", id: "q33", category: "Momentum & Capacity", question: "Do you adjust workflows when patterns of delay repeat?" },
-  { type: "yesno", id: "q34", category: "Momentum & Capacity", question: "Is growth slowed because operations can't handle more volume without breaking?" },
-  { type: "yesno", id: "q35", category: "Momentum & Capacity", question: "Do you make regular improvements instead of waiting for breakdowns?" },
-  { type: "yesno", id: "q36", category: "Momentum & Capacity", question: "Do you proactively build capacity before it becomes a bottleneck?" },
+  // ── DEPLOY — Momentum & Capacity ──
+  { type: "yesno", id: "q28", category: "Deploy", question: "Do you struggle to measure what's really happening because key metrics aren't tracked?" },
+  { type: "yesno", id: "q29", category: "Deploy", question: "Do dashboards or reports help you make faster, clearer decisions?" },
+  { type: "yesno", id: "q30", category: "Deploy", question: "Do you review operational performance at least monthly?" },
+  { type: "yesno", id: "q31", category: "Deploy", question: "Do work delays come from bottlenecks you haven't fully identified or solved yet?" },
+  { type: "yesno", id: "q32", category: "Deploy", question: "Does your team surface blockers quickly so they don't pile up?" },
+  { type: "yesno", id: "q33", category: "Deploy", question: "Do you adjust workflows when patterns of delay repeat?" },
+  { type: "yesno", id: "q34", category: "Deploy", question: "Is growth slowed because operations can't handle more volume without breaking?" },
+  { type: "yesno", id: "q35", category: "Deploy", question: "Do you make regular improvements instead of waiting for breakdowns?" },
+  { type: "yesno", id: "q36", category: "Deploy", question: "Do you proactively build capacity before it becomes a bottleneck?" },
 
   // ── Economic fields ──
   {
