@@ -18,7 +18,7 @@ export default function QuoteSection() {
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
               <Image
-                src="/ecrof_logo_transparent.png"
+                src="/toure-headshot.png"
                 alt="Toure Young"
                 width={56}
                 height={56}

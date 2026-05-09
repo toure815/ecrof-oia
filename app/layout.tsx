@@ -25,11 +25,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Operational Intelligence Audit — Ecrof Media Co.",
+  title: "Operational Intelligence Audit: Ecrof Media Co.",
   description:
-    "A 12 minute operational intelligence audit that reveals where decisions stall, systems break, and growth leaks — before you spend another dollar fixing the wrong thing.",
+    "A 12 minute operational intelligence audit that reveals where decisions stall, systems break, and growth leaks. Before you spend another dollar fixing the wrong thing.",
   openGraph: {
-    title: "Operational Intelligence Audit — Ecrof Media Co.",
+    title: "Operational Intelligence Audit: Ecrof Media Co.",
     description:
       "Discover what's quietly draining your time, money, and momentum. A diagnostic built to expose where operational decisions are costing you money.",
     siteName: "Ecrof Media Co.",
