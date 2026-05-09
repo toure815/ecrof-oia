@@ -3,7 +3,7 @@ import { calculateAuditReport } from "@/lib/oia-engine";
 
 const N8N_WEBHOOK_URL =
   process.env.N8N_WEBHOOK_URL ||
-  "https://api.ecrofmedia.xyz/webhook/audit-results";
+  "https://api.ecrofmedia.xyz/webhook/oia";
 
 const ECONOMIC_KEYS = new Set(["hours_per_week_lost", "hourly_labor_cost_range", "annualRevenue"]);
 const CONTACT_KEYS = new Set(["name", "business", "email"]);
