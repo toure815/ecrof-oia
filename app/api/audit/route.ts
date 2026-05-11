@@ -4,7 +4,7 @@ import { calculateAuditReport } from "@/lib/oia-engine";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const ECONOMIC_KEYS = new Set(["hours_per_week_lost", "hourly_labor_cost_range", "annualRevenue"]);
+const ECONOMIC_KEYS = new Set(["hours_per_week_lost", "hourly_labor_cost_range", "annualRevenue", "total_people"]);
 const CONTACT_KEYS = new Set(["name", "business", "email"]);
 
 function buildEmailHtml(report: Awaited<ReturnType<typeof calculateAuditReport>>, name: string): string {
@@ -61,19 +61,25 @@ function buildEmailHtml(report: Awaited<ReturnType<typeof calculateAuditReport>>
       <p style="margin:8px 0 0;font-size:14px;color:#374151;line-height:1.6;">${desc}</p>
     </div>
 
-    <!-- ROI -->
+    <!-- ROI + RPE -->
     <div style="padding:28px 40px;border-bottom:1px solid #f3f4f6;">
       <p style="margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;">Estimated Impact</p>
-      <div style="display:flex;gap:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:${report.rpe.revenuePerPerson !== null ? "20px" : "0"};">
         <div>
           <p style="margin:0;font-size:22px;font-weight:700;color:#0a0a1a;">$${report.roi.yearlySavings.toLocaleString()}</p>
-          <p style="margin:4px 0 0;font-size:12px;color:#6b7280;">Estimated yearly savings</p>
+          <p style="margin:4px 0 0;font-size:12px;color:#6b7280;">Yearly savings potential</p>
         </div>
         <div>
           <p style="margin:0;font-size:22px;font-weight:700;color:#0a0a1a;">${report.roi.hoursRecovered}h</p>
           <p style="margin:4px 0 0;font-size:12px;color:#6b7280;">Hours recovered per year</p>
         </div>
       </div>
+      ${report.rpe.revenuePerPerson !== null ? `
+      <div style="padding:16px;border-radius:8px;background:${report.rpe.status === "Below Healthy Threshold" ? "#FFF7ED" : "#F0FDF4"};border:1px solid ${report.rpe.status === "Below Healthy Threshold" ? "#FED7AA" : "#BBF7D0"};">
+        <p style="margin:0 0 4px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:${report.rpe.status === "Below Healthy Threshold" ? "#C2410C" : "#15803D"};">Revenue Per Person — ${report.rpe.status}</p>
+        <p style="margin:0 0 6px;font-size:18px;font-weight:700;color:#0a0a1a;">$${report.rpe.revenuePerPerson.toLocaleString()} <span style="font-size:12px;font-weight:400;color:#6b7280;">vs $125K benchmark</span></p>
+        <p style="margin:0;font-size:13px;color:#374151;line-height:1.5;">${report.rpe.message}</p>
+      </div>` : ""}
     </div>
 
     <!-- CTA -->

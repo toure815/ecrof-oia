@@ -92,6 +92,17 @@ const QUESTIONS: Step[] = [
       { label: "Over $5M",     value: "6000000" },
     ],
   },
+  {
+    type: "select", id: "total_people", category: "Time & Economic Impact",
+    question: "How many people are currently involved in running your business — including you?",
+    options: [
+      { label: "Just me",       value: "1"  },
+      { label: "2–5 people",    value: "3"  },
+      { label: "6–10 people",   value: "8"  },
+      { label: "11–25 people",  value: "18" },
+      { label: "26+ people",    value: "30" },
+    ],
+  },
 
   // ── Contact ──
   { type: "contact" },

@@ -41,6 +41,14 @@ export interface ROI {
   annualROI: number;
 }
 
+export interface RPE {
+  revenuePerPerson: number | null;
+  totalPeople: number;
+  benchmark: number;
+  status: "Below Healthy Threshold" | "Healthy / Scalable" | "Not Calculated";
+  message: string;
+}
+
 export interface Recommendation {
   playbook: string;
   sprint: string;
@@ -73,6 +81,9 @@ export interface AuditReport {
 
   // ROI
   roi: ROI;
+
+  // Revenue Per Employee diagnostic overlay
+  rpe: RPE;
 
   // Metadata
   generatedAt: string;
@@ -189,6 +200,7 @@ export function calculateAuditReport(input: {
   economicAnswers: Record<string, string>;
   contact: { name: string; email: string; business: string };
 }): AuditReport {
+  const RPE_BENCHMARK = 125000;
   const { answers, economicAnswers, contact } = input;
 
   // ── Score each question ──
@@ -308,6 +320,24 @@ export function calculateAuditReport(input: {
       ? Number((yearlySavings / investmentCost).toFixed(2))
       : 0;
 
+  // ── RPE (Revenue Per Employee) ──
+  const totalPeople = Number(economicAnswers.total_people) || 0;
+  let rpe: RPE;
+  if (annualRevenue > 0 && totalPeople > 0) {
+    const revenuePerPerson = Math.round(annualRevenue / totalPeople);
+    rpe = {
+      revenuePerPerson,
+      totalPeople,
+      benchmark: RPE_BENCHMARK,
+      status: revenuePerPerson < RPE_BENCHMARK ? "Below Healthy Threshold" : "Healthy / Scalable",
+      message: revenuePerPerson < RPE_BENCHMARK
+        ? "Your revenue per person is below the $125K benchmark. This signals operational drag, not a sales problem. Adding revenue without fixing systems compounds cash flow pressure and burnout."
+        : "Your revenue per person meets or exceeds the $125K benchmark. The priority now is protecting margin, systems, and execution quality so growth doesn't erode profitability.",
+    };
+  } else {
+    rpe = { revenuePerPerson: null, totalPeople, benchmark: RPE_BENCHMARK, status: "Not Calculated", message: "" };
+  }
+
   return {
     name: contact.name,
     email: contact.email,
@@ -338,6 +368,8 @@ export function calculateAuditReport(input: {
       investmentCost,
       annualROI: Math.max(annualROI, 3.5),
     },
+
+    rpe,
 
     generatedAt: new Date().toISOString(),
   };
